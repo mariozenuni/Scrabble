@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[PlayerController::class, 'index']);
-
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::resource('players', PlayerController::class);
