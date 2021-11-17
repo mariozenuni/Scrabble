@@ -8,4 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Player extends Model
 {
     use HasFactory;
+
+
+    protected $table = 'players';
+    public $timestamps = true;
+
+    protected $casts = [
+        'score' => 'integer'
+    ];
+
+    protected $fillable = [
+     
+        'name',
+        'email',
+        'address',
+        'score'
+     
+    ];
+
+
 }

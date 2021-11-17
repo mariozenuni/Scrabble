@@ -6,7 +6,7 @@
                 <h2>Edit Player</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('players.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>
+                <a class="btn btn-primary" href="{{ route('statistics.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>
             </div>
         </div>
     </div>
@@ -22,37 +22,37 @@
         </div>
     @endif
 
-    <form action="{{ route('players.update', $player->id) }}" method="POST">
+    <form action="{{ route('statistics.update', $statistic->id) }}" method="POST">
         @csrf
         @method('PUT')
 
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong class="float-left">Name:</strong>
-                    <input type="text" name="name" value="{{ $player->name }}" class="form-control" placeholder="Name">
+                    <strong class="float-left">Date:</strong>
+                    <input type="text" name="name" value="{{ $statistic->date }}" class="form-control" placeholder="Date">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong class="float-left">E-mail:</strong>
-                    <input type="email" name="email" value="{{ $player->email }}" class="form-control" placeholder="Enter email">
+                    <strong class="float-left">Score:</strong>
+                    <input type="text" name="name" value="{{ $statistic->score }}" class="form-control" placeholder="Score">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong class="float-left">Address:</strong>
-                    <input type="text" name="address" value="{{ $player->address}}" class="form-control" placeholder="Enter address">
+                    <strong class="float-left">Wins:</strong>
+                    <input type="email" name="email" value="{{ $statistic->wins }}" class="form-control" placeholder="wins">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong class="float-left">Losses:</strong>
+                    <input type="text" name="address" value="{{ $statistic->losses}}" class="form-control" placeholder="Losses">
                 </div>
             </div>
            
-            
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong class="float-left" >Score:</strong>
-                    <input type="number" name="score" class="form-control" placeholder="{{ $player->score }}"
-                        value="{{ $player->score }}">
-                </div>
+
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                 <button type="submit" class="btn btn-primary">Submit</button>

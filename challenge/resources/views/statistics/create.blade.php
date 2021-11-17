@@ -1,12 +1,14 @@
 @extends('layouts.layout')
+
 @section('content')
-    <div class="row">
+
+<div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Player</h2>
+                <h2>Add New Player</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('players.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>
+                <a class="btn btn-primary" href="{{ route('statistics.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>
             </div>
         </div>
     </div>
@@ -21,37 +23,35 @@
             </ul>
         </div>
     @endif
-
-    <form action="{{ route('players.update', $player->id) }}" method="POST">
+    <form action="{{ route('statistics.store') }}" method="POST" >
         @csrf
-        @method('PUT')
 
-        <div class="row">
+        <div  class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
+                <div class="form-group ">
                     <strong class="float-left">Name:</strong>
-                    <input type="text" name="name" value="{{ $player->name }}" class="form-control" placeholder="Name">
+                    <input type="text" name="name" class="form-control" placeholder="Enter Name">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong class="float-left">E-mail:</strong>
-                    <input type="email" name="email" value="{{ $player->email }}" class="form-control" placeholder="Enter email">
+                    <input type="text" name="email" class="form-control" placeholder="Enter Email">
                 </div>
             </div>
+            
+         
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong class="float-left">Address:</strong>
-                    <input type="text" name="address" value="{{ $player->address}}" class="form-control" placeholder="Enter address">
+                    <input type="text" name="address" class="form-control" placeholder="Enter Address">
                 </div>
             </div>
-           
-            
+
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong class="float-left" >Score:</strong>
-                    <input type="number" name="score" class="form-control" placeholder="{{ $player->score }}"
-                        value="{{ $player->score }}">
+                    <strong class="float-left">Score:</strong>
+                    <input type="number" name="score" class="form-control" placeholder="Enter score">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-left">
