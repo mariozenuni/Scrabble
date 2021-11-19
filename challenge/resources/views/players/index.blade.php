@@ -27,7 +27,7 @@
             <th>E-mail</th>
             <th>Address</th>
             <th>Membership</th>
-            <th>Points</th>
+          
          
            
             <th width="280px">Action</th>
@@ -39,7 +39,7 @@
                 <td>{{ $player->email }}</td>
                 <td>{{ $player->address }}</td>
                 <td>{{date_format($player->created_at,'jS M Y') }}</td>
-                <td>{{ $player->score }}</td>
+             
                 
                 <td>
                     <form action="{{ route('players.destroy', $player->id) }}" method="POST">

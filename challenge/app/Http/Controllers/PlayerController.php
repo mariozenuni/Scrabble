@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Player;
 use Illuminate\Http\Request;
-
+use App\Models\Statistic;
+use Illuminate\Support\Facades\DB;
 class PlayerController extends Controller
 {
     /**
@@ -14,9 +15,12 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $players=Player::paginate(20);
 
+        return view('players.index', compact('players'))
+            ->with('i', (request()->input('page', 1) - 1) * 20);
+    }
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +28,7 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        //
+        return view('players.create');
     }
 
     /**
@@ -33,10 +37,23 @@ class PlayerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+   
+        public function store(Request $request)
+        {
+                
+            $request->validate([
+                'name' => 'required',
+                'email'=>'required',
+                'address'=>'required'
+                
+            ]);
+    
+            Player::create($request->all());
+    
+            return redirect()->route('players.index')
+                ->with('success', 'Player created successfully.');
+        }
+    
 
     /**
      * Display the specified resource.
@@ -44,9 +61,55 @@ class PlayerController extends Controller
      * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function show(Player $player)
+    public function show($user_id)
     {
-        //
+            $player=Player::findOrFail($user_id);
+
+            $score=DB::table('players')
+            ->join('statistics','players.id','=','statistics.user_id')
+            ->select('score','wins','losses')->where('players.id',"$player->id")
+            ->sum('score');
+
+            $wins=DB::table('players')
+            ->join('statistics','players.id','=','statistics.user_id')
+            ->select('score','wins','losses')->where('players.id',"$player->id")
+            ->sum('wins');
+
+            $losses=DB::table('players')
+            ->join('statistics','players.id','=','statistics.user_id')
+            ->select('score','wins','losses')->where('players.id',"$player->id")
+            ->sum('losses');
+
+            $avg=DB::table('players')
+            ->join('statistics','players.id','=','statistics.user_id')
+            ->select('score')->where('players.id',"$player->id")
+            ->avg('score');
+            $maxScore=DB::table('players')
+            ->join('statistics','players.id','=','statistics.user_id')
+            ->select('score')->where('players.id',"$player->id")
+            ->max('score');
+
+            $avg=DB::table('players')
+            ->join('statistics','players.id','=','statistics.user_id')
+            ->select('score')->where('players.id',"$player->id")
+            ->avg('score');
+
+            $av=round($avg);
+
+            $minScore=DB::table('players')
+            ->join('statistics','players.id','=','statistics.user_id')
+            ->select('score')->where('players.id',"$player->id")
+            ->min('score');
+
+
+        return view('players.show',compact('player'), [
+        'score'=>$score,
+        'wins'=>$wins,
+        'losses'=>$losses,
+        'av'=>$av,
+        'maxScore'=>$maxScore,
+        'minScore'=>$minScore
+        ]);
     }
 
     /**
@@ -57,7 +120,7 @@ class PlayerController extends Controller
      */
     public function edit(Player $player)
     {
-        //
+        return view('players.edit', compact('player'));
     }
 
     /**
@@ -69,7 +132,16 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'score' => 'required'
+        ]);
+        $player->update($request->all());
+
+        return redirect()->route('players.index')
+            ->with('success', 'Players updated successfully');
     }
 
     /**
@@ -78,8 +150,15 @@ class PlayerController extends Controller
      * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Player $player)
+    public function destroy($id)
     {
-        //
+         $player=Player::findOrFail($id);
+
+         $player->delete();
+
+        return redirect()->route('players.index')
+            ->with('success', 'Player deleted successfully');
     }
-}
+ }
+
+

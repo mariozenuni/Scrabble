@@ -12,18 +12,21 @@ class Statistic extends Model
 
     protected $table = 'statistics';
     
+    
 
     protected $casts = [
+        
         'score' => 'integer',
         'wins'=>'integer',
         'losses'=>'integer',
-        'user_id'=>'integer'
+        'user_id'=>'integer',
+     
+       
     ];
 
     protected $fillable = [
-     
+       
         'score',
-        'date',
         'wins',
         'losses',
         'user_id'

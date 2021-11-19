@@ -13,31 +13,49 @@
 
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
+            <div class="form-group pull-left">
                 <strong>Name:</strong>
                 {{ $player->name }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>E-mail:</strong>
-                {{ $player->email }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Address:</strong>
-                {{ $player->address }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
+            <div class="form-group pull-left">
                 <strong>Score:</strong>
-                {{ $player->score }}
+                {{ $score }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
+            <div class="form-group pull-left">
+                <strong>Wins:</strong>
+                {{ $wins }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group pull-left">
+                <strong>Losses:</strong>
+                {{ $losses }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group pull-left">
+                <strong>AVG:</strong>
+                {{ $av }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group pull-left">
+                <strong>Highest point :</strong>
+                {{ $maxScore }} 
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group pull-left">
+                <strong>Lovest point :</strong>
+                {{ $minScore }} 
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group pull-left">
                 <strong>Membership:</strong>
                 {{date_format($player->created_at,'jS M Y') }}
             </div>
