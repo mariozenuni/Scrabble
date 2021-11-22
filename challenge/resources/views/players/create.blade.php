@@ -1,11 +1,11 @@
 @extends('layouts.layout')
 
 @section('content')
-
+<br><br>
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Add New Player</h2>
+               
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('players.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>

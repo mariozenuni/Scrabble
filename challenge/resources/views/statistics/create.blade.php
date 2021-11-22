@@ -1,11 +1,11 @@
-@extends('layouts.layout')
+@extends('layouts2.layouts')
 
 @section('content')
 
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Log New Statistics</h2>
+                
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('statistics.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>
@@ -42,6 +42,13 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong class="float-left">Rival Name:</strong>
+         
+                    <input type="text" name="rival_name" class="form-control" placeholder="Enter Rival">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
                     <strong class="float-left">Wins:</strong>
                     <input type="number" name="wins" class="form-control" placeholder="Enter Wins">
                 </div>
@@ -52,10 +59,22 @@
                     <input type="number" name="losses" class="form-control" placeholder="Enter losses">
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong class="float-left">Place:</strong>
+                    <input type="text" name="place" class="form-control" placeholder="Enter Place">
+                </div>
+            </div>
+ 
+        
+
+            
             <div class="col-xs-12 col-sm-12 col-md-12 text-left">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
+            
         </div>
 
+ 
     </form>
 @endsection

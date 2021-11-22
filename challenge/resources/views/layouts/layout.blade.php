@@ -36,12 +36,13 @@
     <div class="container">
         @yield('content')
     </div>
-    <div class="text-center footer">
-
-        <h4>The Scrabble Club</h4>
-    
-
-    </div>
+    <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy;Scrabble 2021</span>
+                    </div>
+                </div>
+            </footer>
 </body>
 
 </html>

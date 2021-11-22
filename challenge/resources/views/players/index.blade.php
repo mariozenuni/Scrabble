@@ -1,15 +1,12 @@
-@extends('layouts.layout')
+@extends('layouts2.layouts')
 
 @section('content')
 
 <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Scrabble Club UK</h2>
-            </div>
+       
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('players.create') }}" title="Create a project"> <i class="fas fa-plus-circle"></i>
-                    </a>
+                <a class="btn btn-success" href="{{ route('players.create') }}" title="Create a project"> Create  Player </a>
             </div>
         </div>
     </div>
@@ -19,7 +16,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-
+    <br><br>
     <table class="table table-bordered table-responsive-lg">
         <tr>
             <th>No</th>
