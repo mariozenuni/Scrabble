@@ -26,7 +26,7 @@
     <form action="{{ route('players.store') }}" method="POST" >
         @csrf
 
-        <div  class="row">
+        <div  class="container-fluid">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group ">
                     <strong class="float-left">Name:</strong>

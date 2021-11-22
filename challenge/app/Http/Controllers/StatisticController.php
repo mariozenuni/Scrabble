@@ -20,7 +20,7 @@ class StatisticController extends Controller
        
         $playerData =DB::table('statistics')
 
-          ->select('id','created_at','score','wins','losses','user_id')
+          ->select('id','created_at','score','rival_name','place','wins','losses','user_id')
           ->distinct()
           ->get();
 

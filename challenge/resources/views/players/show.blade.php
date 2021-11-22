@@ -45,13 +45,17 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group pull-left">
                 <strong>Highest point :</strong>
-                {{ $maxScore }} 
+                @foreach($maxScore as $data)
+                {{ $data->score }} - {{$data->rival_name}} -{{date('d M Y',strtotime($data->created_at))}} 
+                @endforeach
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group pull-left">
-                <strong>Lovest point :</strong>
-                {{ $minScore }} 
+                <strong>Lowest point :</strong>
+                @foreach($minScore as $data)
+                {{ $data->score }} - {{$data->rival_name}} -{{date('d M Y',strtotime($data->created_at))}} 
+                @endforeach
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

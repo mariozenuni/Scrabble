@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('content')
-    <div class="row">
+    <div class="">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>Edit Player</h2>

@@ -1,4 +1,4 @@
-@extends('layouts2.layouts')
+@extends('layouts.layout')
 
 @section('content')
 
@@ -6,7 +6,7 @@
         <div class="col-lg-12 margin-tb">
        
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('players.create') }}" title="Create a project"> Create  Player </a>
+                <a class="btn btn-success" href="{{ route('players.create') }}" title="Create a player"> Create  Player </a>
             </div>
         </div>
     </div>

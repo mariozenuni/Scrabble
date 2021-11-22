@@ -79,16 +79,7 @@ class PlayerController extends Controller
             ->join('statistics','players.id','=','statistics.user_id')
             ->select('score','wins','losses')->where('players.id',"$player->id")
             ->sum('losses');
-
-            $avg=DB::table('players')
-            ->join('statistics','players.id','=','statistics.user_id')
-            ->select('score')->where('players.id',"$player->id")
-            ->avg('score');
-            $maxScore=DB::table('players')
-            ->join('statistics','players.id','=','statistics.user_id')
-            ->select('score')->where('players.id',"$player->id")
-            ->max('score');
-
+            
             $avg=DB::table('players')
             ->join('statistics','players.id','=','statistics.user_id')
             ->select('score')->where('players.id',"$player->id")
@@ -96,10 +87,20 @@ class PlayerController extends Controller
 
             $av=round($avg);
 
+            $maxScore=DB::table('players')
+            ->join('statistics','players.id','=','statistics.user_id')
+            ->select('score','rival_name','statistics.created_at')
+            ->orderBy('score','DESC')->where('players.id',"$player->id")
+            ->limit(1)    
+            ->get();
+            
+
             $minScore=DB::table('players')
             ->join('statistics','players.id','=','statistics.user_id')
-            ->select('score')->where('players.id',"$player->id")
-            ->min('score');
+            ->select('score','rival_name','statistics.created_at')->where('players.id',"$player->id")
+            ->orderBy('score')->where('players.id',"$player->id")
+            ->limit(1)    
+            ->get();
 
 
         return view('players.show',compact('player'), [
@@ -107,8 +108,8 @@ class PlayerController extends Controller
         'wins'=>$wins,
         'losses'=>$losses,
         'av'=>$av,
-        'maxScore'=>$maxScore,
-        'minScore'=>$minScore
+        'maxScore'=>json_decode($maxScore),
+        'minScore'=>json_decode($minScore)
         ]);
     }
 
