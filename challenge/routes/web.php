@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LeaderController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\StatisticController;
 use App\Models\Statistic;
@@ -21,3 +22,5 @@ Route::get('/', function () {
 });
 Route::resource('players', PlayerController::class);
 Route::resource('statistics', StatisticController::class);
+
+Route::resource('leaders',LeaderController::class);

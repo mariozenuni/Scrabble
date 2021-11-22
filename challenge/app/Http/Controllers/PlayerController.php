@@ -89,7 +89,7 @@ class PlayerController extends Controller
 
             $maxScore=DB::table('players')
             ->join('statistics','players.id','=','statistics.user_id')
-            ->select('score','rival_name','statistics.created_at')
+            ->select('score','rival_name','place','statistics.created_at')
             ->orderBy('score','DESC')->where('players.id',"$player->id")
             ->limit(1)    
             ->get();
@@ -97,9 +97,16 @@ class PlayerController extends Controller
 
             $minScore=DB::table('players')
             ->join('statistics','players.id','=','statistics.user_id')
-            ->select('score','rival_name','statistics.created_at')->where('players.id',"$player->id")
+            ->select('score','rival_name','place','statistics.created_at')->where('players.id',"$player->id")
             ->orderBy('score')->where('players.id',"$player->id")
             ->limit(1)    
+            ->get();
+
+            $maxAVG=DB::table('players')
+            ->join('statistics','players.id','=','statistics.user_id')
+            ->select('score','rival_name','place','statistics.created_at')->where('players.id',"$player->id")
+            ->orderBy('score','DESC')->where('players.id',"$player->id")
+            ->limit(10)    
             ->get();
 
 

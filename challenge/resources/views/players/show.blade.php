@@ -46,7 +46,7 @@
             <div class="form-group pull-left">
                 <strong>Highest point :</strong>
                 @foreach($maxScore as $data)
-                {{ $data->score }} - {{$data->rival_name}} -{{date('d M Y',strtotime($data->created_at))}} 
+                {{ $data->score }} - {{$data->rival_name}} - {{$data->place}} - {{date('d M Y',strtotime($data->created_at))}} 
                 @endforeach
             </div>
         </div>
@@ -54,7 +54,7 @@
             <div class="form-group pull-left">
                 <strong>Lowest point :</strong>
                 @foreach($minScore as $data)
-                {{ $data->score }} - {{$data->rival_name}} -{{date('d M Y',strtotime($data->created_at))}} 
+                {{ $data->score }} - {{$data->rival_name}} - {{$data->place}} - {{date('d M Y',strtotime($data->created_at))}} 
                 @endforeach
             </div>
         </div>
